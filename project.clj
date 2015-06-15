@@ -1,4 +1,4 @@
-(defproject cgore/ring-middleware-format "0.7.0"
+(defproject cgore/ring-middleware-format "0.7.1"
   :description "Ring middleware for parsing parameters and emitting
   responses in various formats (mainly JSON, YAML and Transit out of
   the box)"
@@ -15,7 +15,7 @@
                  [com.google.guava/guava "18.0"]
                  [com.ibm.icu/icu4j "55.1"]
                  [clj-yaml "0.4.0"]
-                 [clojure-msgpack "1.1.0"]
+                 [cgore/clojure-msgpack "1.2.0"]
                  [com.cognitect/transit-clj "0.8.275"]]
   :plugins [[codox "0.8.12"]]
   :codox {:src-dir-uri "http://github.com/cgore/ring-middleware-format/blob/master/"
