@@ -68,6 +68,9 @@
 (def msgpack-echo
   (wrap-msgpack-response identity))
 
+(def x-msgpack-echo
+  (wrap-x-msgpack-response identity))
+
 (defn ^:no-doc slurp-to-bytes
   #^bytes
   [#^InputStream in]
@@ -87,6 +90,14 @@
         resp (msgpack-echo req)]
     (is (= body (keywordize-keys (msgpack/unpack (slurp-to-bytes (:body resp))))))
     (is (.contains (get-in resp [:headers "Content-Type"]) "application/msgpack"))
+    (is (< 2 (Integer/parseInt (get-in resp [:headers "Content-Length"]))))))
+
+(deftest format-x-msgpack-hashmap
+  (let [body {:foo "bar"}
+        req {:body body}
+        resp (x-msgpack-echo req)]
+    (is (= body (keywordize-keys (msgpack/unpack (slurp-to-bytes (:body resp))))))
+    (is (.contains (get-in resp [:headers "Content-Type"]) "application/x-msgpack"))
     (is (< 2 (Integer/parseInt (get-in resp [:headers "Content-Length"]))))))
 
 (def clojure-echo
@@ -228,6 +239,7 @@
     (doseq [accept ["application/edn"
                     "application/json"
                     "application/msgpack"
+                    "application/x-msgpack"
                     "application/x-yaml"
                     "application/transit+json"
                     "application/transit+msgpack"
