@@ -15,7 +15,7 @@
                  [com.google.guava/guava "18.0"]
                  [com.ibm.icu/icu4j "55.1"]
                  [clj-yaml "0.4.0"]
-                 [cgore/clojure-msgpack "1.2.0"]
+                 [clojure-msgpack "1.1.1"]
                  [com.cognitect/transit-clj "0.8.275"]]
   :plugins [[codox "0.8.12"]]
   :codox {:src-dir-uri "http://github.com/cgore/ring-middleware-format/blob/master/"
