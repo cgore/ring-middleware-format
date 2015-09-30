@@ -1,4 +1,4 @@
-(defproject cgore/ring-middleware-format "0.7.5"
+(defproject cgore/ring-middleware-format "0.7.6"
   :description "Ring middleware for parsing parameters and emitting
   responses in various formats (mainly JSON, YAML and Transit out of
   the box)"
